@@ -1,0 +1,36 @@
+From a1ea39209bc1ea2773437dd3b783cb76ac25bdde Mon Sep 17 00:00:00 2001
+From: Andrey Lebedev <andrey.lebedev@gmail.com>
+Date: Wed, 10 Jun 2020 18:19:42 +0000
+Subject: [PATCH] Fix compilation for OE
+
+---
+ Makefile | 2 +-
+ main.c   | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 0e98afc..de37699 100644
+--- a/Makefile
++++ b/Makefile
+@@ -4,4 +4,4 @@ CFLAGS += -std=gnu99 -g $(shell pkg-config --cflags libdrm)
+ LDFLAGS += $(shell pkg-config --libs libdrm)
+ 
+ lima_dump: main.c lima_dump.h
+-	gcc $(CFLAGS) -g -o $@ $^ $(LDFLAGS)
++	$(CC) $(CFLAGS) -g -o $@ $^ $(LDFLAGS)
+diff --git a/main.c b/main.c
+index 7b774ba..63d5a45 100644
+--- a/main.c
++++ b/main.c
+@@ -263,7 +263,7 @@ static int write_task(int fd, const char *filename)
+ 
+ static void dump_asm(int num_file, char **filenames)
+ {
+-	int fd = open(BIN_FILE_NAME, O_RDWR | O_CREAT);
++	int fd = open(BIN_FILE_NAME, O_RDWR | O_CREAT, 0755);
+ 	assert(fd >= 0);
+ 
+ 	struct lima_dump_head head = {
+-- 
+2.17.1
+

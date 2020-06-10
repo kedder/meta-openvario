@@ -43,6 +43,7 @@ IMAGE_INSTALL = " \
     nano \
     openssh-sftp-server \
     pulseaudio-server \
+    lima-dump \
     tslib \
     tslib-tests \
     tslib-uinput \

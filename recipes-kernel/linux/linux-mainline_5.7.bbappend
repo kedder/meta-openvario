@@ -2,7 +2,14 @@ FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 
 SRC_URI += " \
     file://openvario-common.dts \
-    file://${KERNEL_DEVICETREE_SOURCE}"
+    file://${KERNEL_DEVICETREE_SOURCE} \
+    file://lima-debug/0001-drm-lima-save-process-info-for-debug-usage.patch \
+    file://lima-debug/0002-drm-lima-add-max_error_tasks-module-parameter.patch \
+    file://lima-debug/0003-drm-lima-save-task-info-dump-when-task-fail.patch \
+    file://lima-debug/0004-drm-lima-add-error-sysfs-to-export-error-task-dump.patch \
+    file://lima-debug/0005-drm-lima-add-trace-point-for-tasks.patch \
+    file://lima-debug/0006-drm-lima-add-LIMA_BO_FLAG_FORCE_VA.patch \
+    "
 
 PR = "r0"
 

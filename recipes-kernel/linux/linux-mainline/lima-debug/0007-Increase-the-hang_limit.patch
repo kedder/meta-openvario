@@ -1,0 +1,27 @@
+From 71ba0ce1691c3c184cfac728443f0c69ba2baed9 Mon Sep 17 00:00:00 2001
+From: OpenEmbedded <oe.patch@oe>
+Date: Mon, 15 Jun 2020 17:30:27 +0000
+Subject: [PATCH 7/8] Increase the hang_limit
+
+As suggested in
+https://gitlab.freedesktop.org/lima/linux/-/issues/33#note_532619
+---
+ drivers/gpu/drm/lima/lima_sched.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/gpu/drm/lima/lima_sched.c b/drivers/gpu/drm/lima/lima_sched.c
+index 4fbf2c489..1b32d23ad 100644
+--- a/drivers/gpu/drm/lima/lima_sched.c
++++ b/drivers/gpu/drm/lima/lima_sched.c
+@@ -476,7 +476,7 @@ int lima_sched_pipe_init(struct lima_sched_pipe *pipe, const char *name)
+ 
+ 	INIT_WORK(&pipe->recover_work, lima_sched_recover_work);
+ 
+-	return drm_sched_init(&pipe->base, &lima_sched_ops, 1, 0,
++	return drm_sched_init(&pipe->base, &lima_sched_ops, 1, 10,
+ 			      msecs_to_jiffies(timeout), name);
+ }
+ 
+-- 
+2.17.1
+

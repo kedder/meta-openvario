@@ -9,7 +9,10 @@ SRC_URI += " \
     file://lima-debug/0004-drm-lima-add-error-sysfs-to-export-error-task-dump.patch \
     file://lima-debug/0005-drm-lima-add-trace-point-for-tasks.patch \
     file://lima-debug/0006-drm-lima-add-LIMA_BO_FLAG_FORCE_VA.patch \
+    file://lima-debug/0007-Increase-the-hang_limit.patch \
     "
+
+#    file://lima-debug/0008-Tweak-LIMA_PMU_SW_DELAY.patch
 
 PR = "r0"
 
